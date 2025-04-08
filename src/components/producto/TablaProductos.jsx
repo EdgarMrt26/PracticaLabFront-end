@@ -8,6 +8,8 @@ const TablaProductos = ({ productos, cargando, error }) => {
   if (cargando) {
     return <div>Cargando productos...</div>; // Muestra mensaje mientras carga
   }
+
+  //Borrar la línea si a caso.
   if (error) {
     return <div>Error: {error}</div>;        // Muestra error si ocurre
   }
