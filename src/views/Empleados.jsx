@@ -25,6 +25,9 @@ const Empleados = () => {
   const [empleadosFiltrados, setEmpleadosFiltrados] = useState([]);
   const [textoBusqueda, setTextoBusqueda] = useState("");
 
+  const [paginaActual, establecerPaginaActual] = useState(1);
+  const elementosPorPagina = 5; // Número de elementos por página
+
   const obtenerEmpleados = async () => {
     try {
       const respuesta = await fetch('http://localhost:3000/api/empleado');
@@ -107,6 +110,12 @@ const Empleados = () => {
     setEmpleadosFiltrados(filtrados);
   };
 
+  // Calcular elementos paginados
+  const empleadosPaginados = empleadosFiltrados.slice(
+    (paginaActual - 1) * elementosPorPagina,
+    paginaActual * elementosPorPagina
+  );
+
   return (
     <Container className="mt-5">
       <h4>Empleados</h4>
@@ -125,9 +134,13 @@ const Empleados = () => {
       </Row>
 
       <TablaEmpleados
-        empleados={empleadosFiltrados}
+        empleados={empleadosPaginados}
         cargando={cargando}
         error={errorCarga}
+        totalElementos={listaEmpleados.length} // Total de elementos
+        elementosPorPagina={elementosPorPagina} // Elementos por página
+        paginaActual={paginaActual} // Página actual
+        establecerPaginaActual={establecerPaginaActual} // Método para cambiar página
       />
 
       <ModalRegistroEmpleado
