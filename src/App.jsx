@@ -10,6 +10,7 @@ import Categorias from "./views/Categorias";
 import Ventas from "./views/ventas";
 import Usuarios from "./views/Usuarios";
 import Empleados from "./views/Empleados";
+import Compras from "./views/Compras";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/ventas" element={<Ventas />} />
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/empleados" element={<Empleados />} />
+          <Route path="/compras" element={<Compras />} />
         </Routes>
       </main>
     </Router>
