@@ -20,6 +20,7 @@ const Clientes = () => {
     direccion: '',
     cedula: ''
   });
+  //
 
   const [clientesFiltrados, setClientesFiltrados] = useState([]);
   const [textoBusqueda, setTextoBusqueda] = useState("");
