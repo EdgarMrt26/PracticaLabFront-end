@@ -22,10 +22,12 @@ const Inicio = () => {
   };
 
   return (
-    <Container>
-      <h1>¡Bienvenido, {nombreUsuario}!</h1>
-      <p>Estás en la página de inicio.</p>
-      <button onClick={cerrarSesion} type="button" class="btn btn-primary">Cerrar Sesión</button>
+    <Container style={{ marginTop: "95px" }}>
+        <h1>¡Bienvenido, {nombreUsuario}!</h1>
+        <p>Estás en la página de inicio.</p>
+        <button onClick={cerrarSesion} type="button" className="btn btn-primary">
+        Cerrar Sesión
+        </button>
     </Container>
   );
 };
