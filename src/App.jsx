@@ -5,7 +5,7 @@ import Inicio from "./views/Inicio";
 import './App.css';
 import Encabezado from "./components/encabezado/Encabezado";
 import Clientes from "./views/Clientes";
-import Productos from "./views/productos";
+import Productos from "./views/Productos";
 import Categorias from "./views/Categorias";
 import Ventas from "./views/ventas";
 import Usuarios from "./views/Usuarios";
