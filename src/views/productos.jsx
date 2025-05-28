@@ -481,5 +481,6 @@ const Productos = () => {
   );
 };
 
+
 // Exportación del componente
 export default Productos;
