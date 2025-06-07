@@ -14,32 +14,35 @@ import Compras from "./views/Compras";
 import Catalogo from "./views/CatalogoProductos";
 import Grafico from "./views/Estadisticas";
 import Dashboards from "./views/Dashboards";
+import RutaProtegida from "./components/Rutas/RutaProtegida";
+import PiePagina from "./components/infopie/PiePagina";
 
 
 const App = () => {
   return (
-    
     <Router>
-      <main className="margen-superior-main">
-      <Encabezado/>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={<Inicio />} />
-          <Route path="/clientes" element={<Clientes />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/Categorias" element={<Categorias />} />
-          <Route path="/ventas" element={<Ventas />} />
-          <Route path="/usuarios" element={<Usuarios />} />
-          <Route path="/empleados" element={<Empleados />} />
-          <Route path="/compras" element={<Compras />} />
-          <Route path="/catalogo" element={<Catalogo />} />
-          <Route path="/grafico" element={<Grafico />} />
-          <Route path="/dashboards" element={<Dashboards />} />
-        </Routes>
-      </main>
+      <div className="app-wrapper">
+        <Encabezado />
+        <main className="margen-superior-main content">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/inicio" element={<RutaProtegida vista={<Inicio />} />} />
+            <Route path="/clientes" element={<RutaProtegida vista={<Clientes />} />} />
+            <Route path="/productos" element={<RutaProtegida vista={<Productos />} />} />
+            <Route path="/Categorias" element={<RutaProtegida vista={<Categorias />} />} />
+            <Route path="/ventas" element={<RutaProtegida vista={<Ventas />} />} />
+            <Route path="/usuarios" element={<RutaProtegida vista={<Usuarios />} />} />
+            <Route path="/empleados" element={<RutaProtegida vista={<Empleados />} />} />
+            <Route path="/compras" element={<RutaProtegida vista={<Compras />} />} />
+            <Route path="/catalogo" element={<RutaProtegida vista={<Catalogo />} />} />
+            <Route path="/grafico" element={<RutaProtegida vista={<Grafico />} />} />
+            <Route path="/dashboards" element={<RutaProtegida vista={<Dashboards />} />} />
+          </Routes>
+        </main>
+        <PiePagina />
+      </div>
     </Router>
   );
 };
-
 
 export default App;

@@ -21,3 +21,18 @@
   color: rgb(0, 0, 0) !important;
   font-weight: bold;
 }
+
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}

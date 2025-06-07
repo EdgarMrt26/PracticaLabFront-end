@@ -9,6 +9,19 @@ const ModalRegistroClientes = ({
   agregarCliente,
   errorCarga,
 }) => {
+  const validarLetras = (e) => {
+    const charCode = e.which ? e.mhich : e.keyCode;
+    // Permitir solo letras (A-Z, a-z)
+    if (
+      (charCode < 65 || charCode > 90) && // Letras mayúsculas
+      (charCode < 97 || charCode > 122) && // Letras minúsculas
+      charCode !== 8 && // Retroceso
+      charCode !== 46 && // Borrar
+      charCode !== 9 // Tab
+    ) {
+      e.preventDefault(); // Evita que escriba el carácter
+    }
+  };
   return (
     <Modal show={mostrarModal} onHide={() => setMostrarModal(false)}>
       <Modal.Header closeButton>
@@ -23,6 +36,7 @@ const ModalRegistroClientes = ({
               name="primer_nombre"
               value={nuevoCliente.primer_nombre}
               onChange={manejarCambioInput}
+              onKeyDown={validarLetras}
               placeholder="Ingresa el primer nombre"
               maxLength={20}
               required

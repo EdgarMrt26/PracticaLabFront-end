@@ -9,6 +9,35 @@ const ModalEdicionClientes = ({
   actualizarCliente,
   errorCarga,
 }) => {
+
+  const validarLetras = (e) => {
+    const charCode = e.which ? e.which : e.keyCode;
+    // Permitir solo letras {A-Z, a-z}
+    if (
+      (charCode < 65 || charCode >  90) && // Letras mayúsculas
+      (charCode < 97 || charCode > 122) && // Letras minúsculas
+      charCode !== 8 && // Retroceso
+      charCode !== 46 && // Borrar
+      charCode !== 9 // Tab
+
+    ) {
+      e.preventDefault(); // Evita que se escriba el caracter
+    }
+  };
+
+const validaciónFormulario = () => { 
+  return (
+      nuevoCliente.primer_nombre.trim() !== "" && 
+      nuevoCliente.segundo_nombre.trim() !== "" && 
+      nuevoCliente.primer_apellido.trim() !== "" && 
+      nuevoCliente.segundo_apellido.trim() !== "" && 
+      nuevoCliente.celular.trim() !== "" && 
+      nuevoCliente.direccion.trim() !== "" && 
+      nuevoCliente.cedula.trim() !== ""
+    );
+  };
+
+
   return (
     <Modal show={mostrarModalEdicion} onHide={() => setMostrarModalEdicion(false)}>
       <Modal.Header closeButton>
@@ -23,6 +52,7 @@ const ModalEdicionClientes = ({
               name="primer_nombre"
               value={clienteEditado?.primer_nombre || ""}
               onChange={manejarCambioInputEdicion}
+              onKeyDown={validarLetras}
               placeholder="Ingresa el primer nombre (máx. 20 caracteres)"
               maxLength={20}
               required
@@ -36,6 +66,7 @@ const ModalEdicionClientes = ({
               name="segundo_nombre"
               value={clienteEditado?.segundo_nombre || ""}
               onChange={manejarCambioInputEdicion}
+              onKeyDown={validarLetras}
               placeholder="Ingresa el segundo nombre (máx. 20 caracteres)"
               maxLength={20}
             />
@@ -48,6 +79,7 @@ const ModalEdicionClientes = ({
               name="primer_apellido"
               value={clienteEditado?.primer_apellido || ""}
               onChange={manejarCambioInputEdicion}
+              onKeyDown={validarLetras}
               placeholder="Ingresa el primer apellido (máx. 20 caracteres)"
               maxLength={20}
               required
@@ -61,6 +93,7 @@ const ModalEdicionClientes = ({
               name="segundo_apellido"
               value={clienteEditado?.segundo_apellido || ""}
               onChange={manejarCambioInputEdicion}
+              onKeyDown={validarLetras}
               placeholder="Ingresa el segundo apellido (máx. 20 caracteres)"
               maxLength={20}
             />
@@ -112,9 +145,9 @@ const ModalEdicionClientes = ({
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => setMostrarModalEdicion(false)}>
-          Cancelar
+          Cancelar  
         </Button>
-        <Button variant="primary" onClick={actualizarCliente}>
+        <Button variant="primary" onClick={actualizarCliente} disable={!validaciónFormulario()}>
           Guardar Cambios
         </Button>
       </Modal.Footer>
